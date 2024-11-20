@@ -5,11 +5,8 @@ const route = require('./routes/app.routes');
 require('./config/db.connection');
 require('dotenv').config();
 const port = process.env.PORT;
-const socketIo = require('socket.io');
-const http = require('http');
 
-const server = http.createServer(app);
-const io = socketIo(server);
+
 
 app.use(express.json());
 app.use(cors({ origin: '*' }));
@@ -25,6 +22,6 @@ app.get('**', (req, res) => {
     res.status(404).send({ message: 'No route found!' });
 });
 
-server.listen(port || 3000, () => {
-    console.log(`Server is running and Socket.IO is connected on port ${port || 3000}`);
+app.listen(port || 3000, () => {
+    console.log(`app is running and  connected on port ${port || 3000}`);
 });

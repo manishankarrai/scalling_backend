@@ -1,8 +1,11 @@
 const express  =  require('express');
 const  route  =  express.Router() ;
-const chatRoute  =  require('./chat.route');
+const employeeRoute  =  require('./emp.route');
+const ChildCompanyRoute  =  require('./childCompany.route');
 
-route.use('/chat' , chatRoute);
+
+route.use('/employee' , employeeRoute);
+route.use('/company' , ChildCompanyRoute);
 
 
 route.get('/' , (req , res)=> {

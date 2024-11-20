@@ -4,21 +4,22 @@ const {
     getEmp , getByIdEmp  , storeEmp , updateEmp  , deleteEmp   , authEmp
 
 } =  require('../controllers/chat.controllers');
+const { checkCompanyId } =  require('../middleware/checkCompanyId.middleware')
 
 
-
+route.use(checkCompanyId);
 
 route.get('/' , (req , res)=> {
     res.status(200).send({message: "chat section working "});
 });
 
 
-route.get('/employee/get' , getEmp );
-route.get('/employee/get/:id' , getByIdEmp );
-route.post('/employee/store' , storeEmp );
-route.put('/employee/update/:id' , updateEmp );
-route.delete('/employee/delete/:id' , deleteEmp );
-route.post('/employee/auth' , authEmp );
+route.get('/get' , getEmp );
+route.get('/get/:id' , getByIdEmp );
+route.post('/store' , storeEmp );
+route.put('/update/:id' , updateEmp );
+route.delete('/delete/:id' , deleteEmp );
+route.post('/auth' , authEmp );
 
 
 
